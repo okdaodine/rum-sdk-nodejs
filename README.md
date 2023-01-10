@@ -15,7 +15,7 @@ const ethers = require('ethers');
 // create an ethereum wallet
 const wallet = ethers.Wallet.createRandom();
 
-// import seed
+// import group seed
 const group = SDK.cache.Group.add('rum://...');
 
 // sign data and send trx to group
