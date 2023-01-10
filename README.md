@@ -87,19 +87,17 @@ console.log(result);
 const SDK = require('rum-sdk-nodejs');
 const result = SDK.cache.Group.list();
 console.log(result);
-// [
-//   {
-//     appKey: "group_timeline",
-//     chainAPIs: ['http://127.0.0.1:9003'],
-//     cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
-//     consensusType: "poa",
-//     encryptionType: "public",
-//     groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
-//     groupName: "chat group",
-//     ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
-//     signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
-//   }
-// ]
+// [{
+//   appKey: "group_timeline",
+//   chainAPIs: ['http://127.0.0.1:9003'],
+//   cipherKey: "c0f3a84920c2c5b93ba308a92302789ca991cb2376c11b16d48fefb31666d5d2",
+//   consensusType: "poa",
+//   encryptionType: "public",
+//   groupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
+//   groupName: "chat group",
+//   ownerPubKey: "Aqa6ngNxgrVhf2kQc4nA-0Wr4tsWiaBrshZJPujT5B9g",
+//   signature: "GDLJ+TcXuo95q+CsUFty7pvMIYZRFRQ3VwrparvjKy00wIYSmx5pl4xT4ALb6AVgNei/is5kn1MuXfh9b5wB+QE=",
+// }]
 ```
 
 ### Create trx
@@ -155,19 +153,17 @@ const SDK = require('rum-sdk-nodejs');
   });
   console.log(result);
 })();
-// [
-//   {
-//     Data: { type: 'Note', content: 'send from JavaScript SDK' },
-//     Expired: 1657279269056000000,
-//     GroupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
-//     Nonce: 1,
-//     SenderPubkey: "Ak0RxoYwYhkAfg0ImkLh-ukRIHkoQ-Kw6QCRr_o83bmq",
-//     SenderSign: "Dz436tcTh+NSUjF38oUBjXkIezVfENb/pit9BY1v8jZrjzcwu66YE8OFO9/MzRNIkhgTK2wulfmk51mzJz/9Txs=",
-//     TimeStamp: "1657279239056000000",
-//     TrxId: "41f1e91e-5604-4539-8dee-7cf7e3ef5046",
-//     Version: "1.0.0",
-//   }
-// ]
+// [{
+//   Data: { type: 'Note', content: 'send from JavaScript SDK' },
+//   Expired: 1657279269056000000,
+//   GroupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
+//   Nonce: 1,
+//   SenderPubkey: "Ak0RxoYwYhkAfg0ImkLh-ukRIHkoQ-Kw6QCRr_o83bmq",
+//   SenderSign: "Dz436tcTh+NSUjF38oUBjXkIezVfENb/pit9BY1v8jZrjzcwu66YE8OFO9/MzRNIkhgTK2wulfmk51mzJz/9Txs=",
+//   TimeStamp: "1657279239056000000",
+//   TrxId: "41f1e91e-5604-4539-8dee-7cf7e3ef5046",
+//   Version: "1.0.0",
+// }]
 ```
 | Parameter      | Type |
 | ----------- | ----------- |
