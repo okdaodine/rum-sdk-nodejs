@@ -169,10 +169,3 @@ const SDK = require('rum-sdk-nodejs');
 //   Version: "1.0.0",
 // }]
 ```
-| Parameter      | Type |
-| ----------- | ----------- |
-| groupId      | string       |
-| count   | number        |
-| startTrx   | string        |
-| reverse   | boolean        |
-
