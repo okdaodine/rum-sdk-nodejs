@@ -33,10 +33,10 @@ SDK.chain.Trx.create({
 });
 
 // get data from chain
-const result = await SDK.chain.Content.list({
+const contents = await SDK.chain.Content.list({
   groupId: group.groupId,
 });
-console.log(result);
+console.log(contents);
 // [{
 //   "Data": {
 //     "type": "Create",
@@ -71,8 +71,8 @@ console.log(result);
 ``` javascript
 const SDK = require('rum-sdk-nodejs');
 const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
-const result = SDK.cache.Group.get(groupId);
-console.log(result);
+const group = SDK.cache.Group.get(groupId);
+console.log(group);
 // {
 //   appKey: "group_timeline",
 //   chainAPIs: ['http://127.0.0.1:9003'],
@@ -89,8 +89,8 @@ console.log(result);
 ### List groups
 ``` javascript
 const SDK = require('rum-sdk-nodejs');
-const result = SDK.cache.Group.list();
-console.log(result);
+const groups = SDK.cache.Group.list();
+console.log(groups);
 // [{
 //   appKey: "group_timeline",
 //   chainAPIs: ['http://127.0.0.1:9003'],
@@ -129,8 +129,8 @@ const SDK = require('rum-sdk-nodejs');
 (async () => {
   const groupId = '8136923b-8203-4e08-bfe7-50eb3b558e2c';
   const trxId = '41f1e91e-5604-4539-8dee-7cf7e3ef5046';
-  const result = await SDK.chain.Trx.get(groupId, trxId);
-  console.log(result);
+  const trx = await SDK.chain.Trx.get(groupId, trxId);
+  console.log(trx);
 })();
 // {
 //   Data: "SdujS8K8zv2E6X839+J3tvIzkpYJti44Bw0cZ0weaYA4sTm0Z1rV/raKoa6zBwrAZYM9Zs+QdLS06jCVcaIvZrDqZysuAbTA/0JPmWVcLRdoiipdjAe6ov35f7WgVps6iSKUrw==",
@@ -152,21 +152,28 @@ const SDK = require('rum-sdk-nodejs');
 ``` javascript
 const SDK = require('rum-sdk-nodejs');
 (async () => {
-  const result = await SDK.chain.Content.list({
+  const contents = await SDK.chain.Content.list({
     groupId: '8136923b-8203-4e08-bfe7-50eb3b558e2c',
   });
-  console.log(result);
+  console.log(contents);
 })();
 // [{
-//   Data: { type: 'Note', content: 'send from JavaScript SDK' },
-//   Expired: 1657279269056000000,
-//   GroupId: "8136923b-8203-4e08-bfe7-50eb3b558e2c",
-//   Nonce: 1,
-//   SenderPubkey: "Ak0RxoYwYhkAfg0ImkLh-ukRIHkoQ-Kw6QCRr_o83bmq",
-//   SenderSign: "Dz436tcTh+NSUjF38oUBjXkIezVfENb/pit9BY1v8jZrjzcwu66YE8OFO9/MzRNIkhgTK2wulfmk51mzJz/9Txs=",
-//   TimeStamp: "1657279239056000000",
-//   TrxId: "41f1e91e-5604-4539-8dee-7cf7e3ef5046",
-//   Version: "1.0.0",
+//   "Data": {
+//     "type": "Create",
+//     "object" : {
+//       "type": "Note",
+//       "id": "1",
+//       "content": "hello world",
+//     }
+//   },
+//   "TrxId": "...",
+//   "GroupId": "...",
+//   "TimeStamp": "...",
+//   "Version": "1.0.0",
+//   "Expired": 1672284016463,
+//   "Nonce": 1,
+//   "SenderPubkey": "...",
+//   "SenderSign": "..."
 // }]
 ```
 
