@@ -10,9 +10,13 @@ $ npm install rum-sdk-nodejs
 
 ```javascript
 const SDK = require('rum-sdk-nodejs');
+const ethers = require('ethers');
 
 // import seed
 const group = SDK.cache.Group.add('rum://...');
+
+// create an ethereum wallet
+const wallet = ethers.Wallet.createRandom();
 
 // create and send trx
 SDK.chain.Trx.create({
@@ -25,7 +29,7 @@ SDK.chain.Trx.create({
     }
   },
   groupId: group.groupId,
-  privateKey: '...'
+  privateKey: wallet.privateKey
 });
 
 // get data from chain
