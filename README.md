@@ -172,4 +172,4 @@ const SDK = require('rum-sdk-nodejs');
 
 ## More examples
 
-You can check data format and more real world examples in https://docs.rumsystem.net/docs/data-format-and-examples/
+You can check more real world examples in https://docs.rumsystem.net/docs/data-format-and-examples/
