@@ -9,7 +9,6 @@ $ npm install rum-sdk-nodejs
 ## Usage
 
 ```javascript
-// import SDK
 const SDK = require('rum-sdk-nodejs');
 
 // import seed
