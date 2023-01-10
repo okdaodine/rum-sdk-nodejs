@@ -169,3 +169,7 @@ const SDK = require('rum-sdk-nodejs');
 //   Version: "1.0.0",
 // }]
 ```
+
+## More example
+
+You can check data format and more real world examples in https://docs.rumsystem.net/docs/data-format-and-examples/
