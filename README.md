@@ -10,7 +10,7 @@ $ npm install rum-sdk-nodejs
 
 ```javascript
 const SDK = require('rum-sdk-nodejs');
-const ethers = require('ethers');
+const { ethers } = require("ethers");
 
 // create an ethereum wallet
 const wallet = ethers.Wallet.createRandom();
