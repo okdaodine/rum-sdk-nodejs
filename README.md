@@ -1,9 +1,9 @@
-# quorum-light-node-sdk
-Javascript SDK for quorum light node.
+# rum-sdk-nodejs
+Rum SDK for nodejs
 
 ## Install
 ```
-$ npm install quorum-light-node-sdk
+$ npm install rum-sdk-nodejs
 ```
 
 ## Usage
