@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test esm bundler</title>
+</head>
+<body>
+  
+  <script src="../../dist/quorum-light-node-sdk.esm.js"></script>
+  <script>
+    const sleep = (n = 500) =>
+      new Promise(resolve => {
+        setTimeout(() => {
+          resolve();
+        }, n);
+      });
+
+    QuorumLightNodeSDK.cache.Group.clear();
+
+    // add group
+    (async () => {
+      try {
+        const seedUrl = 'rum://seed?v=1&e=0&n=0&b=DeCopIv7REuIa3Cmc1helQ&c=madR-JfMNX5yyI-fY4EGnPyexpuLOXCr4_rvv12TM6g&g=IGWARzyKSXWkyhv0FgGfvQ&k=ApoG2ZHyc_IoHw7b_w86k4FbA9HmEoewxRu5IG-fW1fB&s=Myi20mn26LfVfyANSpfLLwNSfLrRgSZRPY6peofkoIUrVACHQYvyM_YvOQ6kjJ2tMyBqoPyE-XT8K3MLTjZaRwE&t=FwhjNiEfov4&a=%E8%81%8A%E5%A4%A9%E5%AE%A41&y=group_timeline&u=https%3A%2F%2F103.61.39.95%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyIyMDY1ODA0Ny0zYzhhLTQ5NzUtYTRjYS0xYmY0MTYwMTlmYmQiXSwiZXhwIjoxODE3MzY1NTUxLCJuYW1lIjoiYWxsb3ctMjA2NTgwNDctM2M4YS00OTc1LWE0Y2EtMWJmNDE2MDE5ZmJkIiwicm9sZSI6Im5vZGUifQ.Qbarg_OCo3i9R--l8nbuMwtV4F1EjqbECkWhhz2543k';
+        const result = QuorumLightNodeSDK.cache.Group.add(seedUrl);
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+
+    // create trx
+    (async () => {
+      try {
+        const wallet = QuorumLightNodeSDK.ethers.Wallet.createRandom();
+        // const privateKey = wallet.privateKey;
+        const privateKey = '';
+        const result = await QuorumLightNodeSDK.chain.Trx.create({
+          groupId: QuorumLightNodeSDK.cache.Group.list()[0].groupId,
+          object: {
+            type: 'Note',
+            content: `send from ${privateKey ? 'privateKey' : 'MetaMask'}`,
+          },
+          privateKey,
+        });
+        console.log(result);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+
+    // // list contents
+    // (async () => {
+    //   try {
+    //     const result = await QuorumLightNodeSDK.chain.Content.list({
+    //       groupId: QuorumLightNodeSDK.cache.Group.list()[0].groupId,
+    //       count: 500
+    //     });
+    //     console.log(result);
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // })();
+  </script>
+</body>
+</html>
