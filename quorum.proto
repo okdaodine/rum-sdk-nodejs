@@ -1,64 +1,9 @@
 package quorum.pb;
 syntax = "proto3";
 
-message Any {
-  string typeUrl = 1;
-  bytes value = 2;
-}
-
-message _Object {
-  string id = 1;
-  string type = 2;
-  repeated _Object attributedTo = 4;
-  string content = 6;
-  string name = 8;
-  repeated _Object image = 12;
-  _Object inreplyto = 13;
-  string summary = 19;
-}
-
-message Activity {
-  string id = 1;
-  string type = 2;
-  repeated _Object attributedTo = 4;
-  string content = 6;
-  string name = 8;
-  repeated _Object image = 12;
-  _Object inreplyto = 13;
-  string summary = 19;
-
-  _Object actor = 29;
-  _Object object = 30;
-  _Object target = 31;
-  _Object result = 32;
-  _Object origin = 33;
-}
-
-enum TrxType {
-  POST               = 0;
-  SCHEMA             = 2;
-  PRODUCER           = 3;
-  ANNOUNCE           = 4;
-  REQ_BLOCK_FORWARD  = 5;
-  REQ_BLOCK_BACKWARD = 6;
-  REQ_BLOCK_RESP     = 7;
-  BLOCK_SYNCED       = 8;
-  BLOCK_PRODUCED     = 9;
-  USER               = 10;
-  ASK_PEERID         = 11;
-  ASK_PEERID_RESP    = 12;
-  CHAIN_CONFIG       = 13;
-  APP_CONFIG         = 14;
-}
-
-enum TrxStroageType {
-    CHAIN    = 0;
-    CACHE = 1;
-}
-
 message Trx {
   string  TrxId        = 1;
-  TrxType Type         = 2;    
+  string  Type         = 2;    
   string  GroupId      = 3;
   bytes   Data         = 4; 
   int64   TimeStamp    = 5;
@@ -68,5 +13,5 @@ message Trx {
   int64   Nonce        = 9;
   string  SenderPubkey = 10;  
   bytes   SenderSign   = 11;
-  TrxStroageType StorageType = 12;
+  string StorageType = 12;
 }

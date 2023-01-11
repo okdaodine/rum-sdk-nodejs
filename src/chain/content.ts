@@ -1,5 +1,5 @@
 import { IActivity, IContent, IEncryptedContent, IListContentsOptions } from './types';
-import { AEScrypto, protobuf } from '../utils';
+import { AEScrypto, typeTransform } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
@@ -43,19 +43,16 @@ export const list = async (options: IListContentsOptions) => {
   const contents = await Promise.all(res.data.map(async (item) => {
     const encryptedBuffer = Base64.toUint8Array(item.Data);
     const buffer = await AEScrypto.decrypt(encryptedBuffer, group!.cipherKey);
-    const activity = protobuf.toObject({
-      type: 'quorum.pb.Activity',
-      buffer
-    });
-    if (activity.object && activity.object.image) {
-      activity.object.image = activity.object.image.map((item: any) => {
-        item.content = Base64.fromUint8Array(item.content);
-        return item;
-      })
+    let data = {} as IActivity;
+    try {
+      const dataString = typeTransform.uint8ArrayToString(buffer);
+      data = JSON.parse(dataString);
+    } catch (err) {
+      console.log(err);
     }
     return {
       ...item,
-      Data: activity as IActivity
+      Data: data as IActivity
     } as IContent;
   }));
 
