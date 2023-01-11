@@ -43,11 +43,12 @@ export const list = async (options: IListContentsOptions) => {
   const contents = await Promise.all(res.data.map(async (item) => {
     const encryptedBuffer = Base64.toUint8Array(item.Data);
     const buffer = await AEScrypto.decrypt(encryptedBuffer, group!.cipherKey);
+    const dataString = typeTransform.uint8ArrayToString(buffer);
     let data = {} as IActivity;
     try {
-      const dataString = typeTransform.uint8ArrayToString(buffer);
       data = JSON.parse(dataString);
     } catch (err) {
+      console.log(`[fail to parse data]:`, { item, dataString });
       console.log(err);
     }
     return {
