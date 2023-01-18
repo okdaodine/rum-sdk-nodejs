@@ -14,14 +14,14 @@ export default {
   cache,
   chain,
   utils,
-  ethers
+  ethers,
 };
 
 export {
   cache,
   chain,
   utils,
-  ethers
+  ethers,
 }
 
 if (typeof window !== 'undefined') {

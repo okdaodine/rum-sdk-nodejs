@@ -18,9 +18,10 @@ export interface ITrx {
 export interface ICreateActivityPayload {
   groupId: string;
   data: IActivity;
-version?: string;
+  version?: string;
   timestamp?: number
   aesKey?: string;
+  agePublicKeys?: string[];
   privateKey?: string;
   publicKey?: string
   sign?: (hash: string) => string | Promise<string>

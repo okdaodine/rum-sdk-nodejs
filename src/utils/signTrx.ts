@@ -2,6 +2,7 @@ import { ISignTrxPayload } from './types';
 import * as protobuf from './protobuf';
 import * as AEScrypto from './AEScrypto';
 import * as typeTransform from './typeTransform';
+import ageEncryption from './ageEncryption';
 import { v4 as uuidV4 } from 'uuid';
 import sha256 from 'crypto-js/sha256';
 import encBase64 from 'crypto-js/enc-base64'
@@ -11,7 +12,7 @@ import { assert, error } from './assert';
 
 let nonce = 1;
 export const signTrx = async (payload: ISignTrxPayload) => {
-  const { groupId, data, version, timestamp, aesKey, privateKey } = payload;
+  const { groupId, data, version, timestamp, aesKey, agePublicKeys, privateKey } = payload;
   assert(groupId, error.required('groupId'));
   assert(data, error.required('data'));
   assert(aesKey, error.required('aesKey'));
@@ -20,7 +21,12 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     assert(account, error.notFound('provider account'));
   }
   const dataBuffer = typeTransform.stringToUint8Array(JSON.stringify(data));
-  const encrypted = await AEScrypto.encrypt(dataBuffer, aesKey);
+  let encrypted = new Uint8Array();
+  if (agePublicKeys) {
+    encrypted = await ageEncryption.encrypt_with_x25519_2(agePublicKeys, dataBuffer);
+  } else {
+    encrypted = await AEScrypto.encrypt(dataBuffer, aesKey);
+  }
   const now = new Date();
   const senderPubkey = payload.publicKey ?? await getSenderPubkey(privateKey);
   const trx = {

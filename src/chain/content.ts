@@ -1,4 +1,4 @@
-import { IActivity, IContent, IEncryptedContent, IListContentsOptions } from './types';
+import { IActivity, IDecryptedContent, IEncryptedContent, IListContentsOptions } from './types';
 import { AEScrypto, typeTransform } from '../utils';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
@@ -42,19 +42,24 @@ export const list = async (options: IListContentsOptions) => {
   
   const contents = await Promise.all(res.data.map(async (item) => {
     const encryptedBuffer = Base64.toUint8Array(item.Data);
+
+    if (group?.encryptionType === 'private') {
+      return item;
+    }
+
     const buffer = await AEScrypto.decrypt(encryptedBuffer, group!.cipherKey);
     const dataString = typeTransform.uint8ArrayToString(buffer);
     let data = {} as IActivity;
     try {
       data = JSON.parse(dataString);
     } catch (err) {
-      console.log(`[fail to parse data]:`, { item, dataString });
+      console.log(`[fail to parse json for trx.Data]:`, { item, dataString });
       console.log(err);
     }
     return {
       ...item,
-      Data: data as IActivity
-    } as IContent;
+      Data: data
+    } as IDecryptedContent;
   }));
 
   return contents;

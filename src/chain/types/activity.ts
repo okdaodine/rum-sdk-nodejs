@@ -7,6 +7,7 @@ export interface IObject {
   image?: IObject[]
   inreplyto?: IObject
   attributedTo?: IObject[]
+  mediaType?: string
 }
 
 export interface IActivity extends IObject {

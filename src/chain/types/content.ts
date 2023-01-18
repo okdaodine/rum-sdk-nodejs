@@ -11,7 +11,7 @@ export interface IEncryptedContent {
   Version: string
 }
 
-export interface IContent {
+export interface IDecryptedContent {
   Data: IActivity
   Expired: number
   GroupId: string
@@ -27,4 +27,5 @@ export interface IListContentsOptions {
   count?: number;
   startTrx?: string
   reverse?: boolean
+  agePrivateKey?: string
 }
