@@ -621,13 +621,17 @@ var exports$1 = /*#__PURE__*/Object.freeze({
 });
 
 function loadFile(url) {
+    var request = require('request');
     return new Promise((resolve, reject) => {
-        require("fs").readFile(require("path").join(__dirname, url), (err, data) => {
+        request({
+          url,
+          encoding: null
+        }, function (err, response, body) {
             if (err) {
                 reject(err);
-
+    
             } else {
-                resolve(data);
+                resolve(body);
             }
         });
     });
@@ -635,7 +639,7 @@ function loadFile(url) {
 var Cargo = async (opt = {}) => {
     let { importHook, serverPath } = opt;
 
-    let path = loadFile("./rage.wasm");
+    let path = loadFile('https://static-assets.pek3b.qingstor.com/rum_sdk/rage.wasm');
 
     if (serverPath != null) {
         path = serverPath + /[^\/\\]*$/.exec(path)[0];
