@@ -15,3 +15,17 @@ message Trx {
   bytes   SenderSign   = 11;
   string StorageType = 12;
 }
+
+message AnnounceItem {
+  string GroupId = 1;
+  string SignPubkey = 2;
+  string EncryptPubkey = 3;
+  string AnnouncerSignature = 4;
+  int64 Type = 5;
+  string OwnerPubkey = 6;
+  string OwnerSignature = 7;
+  int64 Result = 8;
+  int64  TimeStamp = 9;
+  int64 Action = 10;
+  string Memo = 11;
+}

@@ -90,6 +90,54 @@ const jsonDescriptor = {
           "id": 12
          }
         }
+       },
+       "AnnounceItem": {
+        "fields": {
+         "GroupId": {
+          "type": "string",
+          "id": 1
+         },
+         "SignPubkey": {
+          "type": "string",
+          "id": 2
+         },
+         "EncryptPubkey": {
+          "type": "string",
+          "id": 3
+         },
+         "AnnouncerSignature": {
+          "type": "string",
+          "id": 4
+         },
+         "Type": {
+          "type": "int64",
+          "id": 5
+         },
+         "OwnerPubkey": {
+          "type": "string",
+          "id": 6
+         },
+         "OwnerSignature": {
+          "type": "string",
+          "id": 7
+         },
+         "Result": {
+          "type": "int64",
+          "id": 8
+         },
+         "TimeStamp": {
+          "type": "int64",
+          "id": 9
+         },
+         "Action": {
+          "type": "int64",
+          "id": 10
+         },
+         "Memo": {
+          "type": "string",
+          "id": 11
+         }
+        }
        }
       }
      }

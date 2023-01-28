@@ -7,4 +7,5 @@ test/browser/.cache
 test/browser/dist
 test/browser/yarn.lock
 local_storage_data
+localStorage
 proto.json

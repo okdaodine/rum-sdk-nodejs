@@ -10,7 +10,7 @@ const SDK = require('../dist');
   // const agePublicKey = await SDK.utils.ageEncryption.get_public_key(agePrivateKey);
 })();
 
-const seed = 'rum://seed?v=1\u0026e=1\u0026n=0\u0026b=AH8mrQ6dSaqq0h3nRF892Q\u0026c=HcBTTvgZTdI1MYJQ4wBMr7GlTwy6WHvqNJzEETbeh-8\u0026g=yFUel6N9Qp6ZtB9HiXhmFQ\u0026k=A8hfNDAUJzdndxfHbZ3BrcooEY5zpMy9ajEk18mnh81V\u0026s=uODPc-UG5xD3v-FGCdPnyuhELTLkaIo2hFU0Gj3XURoIDIXnLstv3PFToIkav_lkb5BBw-OvDVD8jUMjvO9JuAA\u0026t=FztTd4Cf8zg\u0026a=my_test_group\u0026y=test_app\u0026u=http%3A%2F%2F127.0.0.1%3A8000%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyJjODU1MWU5Ny1hMzdkLTQyOWUtOTliNC0xZjQ3ODk3ODY2MTUiXSwiZXhwIjoxODMxNzAzNDYwLCJuYW1lIjoiYWxsb3ctYzg1NTFlOTctYTM3ZC00MjllLTk5YjQtMWY0Nzg5Nzg2NjE1Iiwicm9sZSI6Im5vZGUifQ.R9IL6FwfS8bIklTilfPERo-J1JrQRdrfy2L-GAglsas';
+const seed = 'rum://seed?v=1\u0026e=1\u0026n=0\u0026b=Dt97x_0GRU2I4ITvmMjgOQ\u0026c=a0AmHujXwrEWDtT8U2WM6zA_CwUxD_dWGCt-tgPWbww\u0026g=gBeKYDn_RDOebPL2xW_kdA\u0026k=AlmBSKXu4371lUDiQnxC3YtnFAXkvCTgYD2MYjlLOmdr\u0026s=mhRDMPeAqygMRCaEg73DIhW-APH-M2ChQR3igw41LwQfkfL2EaFSOny9ivXypjn4e9cykQxBqyoGAps-GyGqWwA\u0026t=Fz54YjqDhIg\u0026a=my_test_group\u0026y=test_app\u0026u=http%3A%2F%2F127.0.0.1%3A8000%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyI4MDE3OGE2MC0zOWZmLTQ0MzMtOWU2Yy1mMmY2YzU2ZmU0NzQiXSwiZXhwIjoxODMyNTg4NDc1LCJuYW1lIjoiYWxsb3ctODAxNzhhNjAtMzlmZi00NDMzLTllNmMtZjJmNmM1NmZlNDc0Iiwicm9sZSI6Im5vZGUifQ.B2IZL2nWFhl2rWQa5_vhxP-lpdpe0MLo4JgvxUudsyA';
 const group = SDK.cache.Group.add(seed);
 const ethPrivateKey = '0xcc1bc29f7ae0163840309ec84b06f669d37c42d649778cf6a7034ab245301999';
 const agePrivateKey = 'AGE-SECRET-KEY-1LGP788TRDU9YVP3G67PUF0SFW2HTAT2NP24KE37F08YP2XUACKCQ9SVUMF';
@@ -24,7 +24,7 @@ const agePublicKey = 'age1ytl626hqq0ulfdejq8a5n6056rh0va5egsmvamcfae9q5grtn9msxn
         object : {
           type: "Note",
           id: "1",
-          content: "hello world 222 from private group",
+          content: "hello world from private group",
         }
       },
       agePublicKeys: [ agePublicKey ],
