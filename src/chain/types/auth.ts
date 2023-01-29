@@ -6,6 +6,16 @@ export interface IAnnounceOptions {
   action?: ActionType
 }
 
+export interface IAnnounceResult {
+  group_id: string
+  sign_pubkey: string
+  encrypt_pubkey: string
+  type: string
+  action: string
+  sign: string
+  trx_id: string
+}
+
 export enum AnnounceType {
   AS_USER = 0,
   AS_PRODUCER = 1,

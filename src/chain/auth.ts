@@ -1,4 +1,4 @@
-import { IAnnounceOptions, ApproveType, AnnounceType, ActionType } from './types';
+import { IAnnounceOptions, IAnnounceResult, ApproveType, AnnounceType, ActionType } from './types';
 import sha256 from 'crypto-js/sha256';
 import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
@@ -12,6 +12,8 @@ export const announce = async (options: IAnnounceOptions) => {
   const { groupId, privateKey, encryptPubKey, type, action } = options;
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
+  assert(privateKey, error.required('privateKey'));
+  assert(encryptPubKey, error.required('encryptPubKey'));
   const senderPubkey = await getSenderPubkey(privateKey);
   const p = {
     GroupId: groupId,
@@ -44,6 +46,19 @@ export const announce = async (options: IAnnounceOptions) => {
     headers: {
       Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
     }
-  }) as Promise<AxiosResponse<{ trx_id: string }>>);
+  }) as Promise<AxiosResponse<IAnnounceResult>>);
+  return res.data;
+}
+
+
+export const getEncryptPubKeys = async (groupId: string) => {
+  const group = cache.Group.get(groupId);
+  assert(group, error.notFound('group'));
+  const apiURL = new URL(group!.chainAPIs[0]);
+  const res = await (axios.get(`${apiURL.origin}/api/v1/node/getencryptpubkeys/${groupId}`, {
+    headers: {
+      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
+    }
+  }) as Promise<AxiosResponse<{ keys: string[] }>>);
   return res.data;
 }
