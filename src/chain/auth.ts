@@ -50,7 +50,6 @@ export const announce = async (options: IAnnounceOptions) => {
   return res.data;
 }
 
-
 export const getEncryptPubKeys = async (groupId: string) => {
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
