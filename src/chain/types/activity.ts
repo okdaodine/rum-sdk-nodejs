@@ -8,6 +8,7 @@ export interface IObject {
   inreplyto?: IObject
   attributedTo?: IObject[]
   mediaType?: string
+  describes?: IObject
 }
 
 export interface IActivity extends IObject {
