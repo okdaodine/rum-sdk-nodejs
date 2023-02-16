@@ -10,7 +10,7 @@ const SDK = require('../dist');
   // const agePublicKey = await SDK.utils.ageEncryption.get_public_key(agePrivateKey);
 })();
 
-const seed = 'rum://seed?v=1\u0026e=1\u0026n=0\u0026b=Dt97x_0GRU2I4ITvmMjgOQ\u0026c=a0AmHujXwrEWDtT8U2WM6zA_CwUxD_dWGCt-tgPWbww\u0026g=gBeKYDn_RDOebPL2xW_kdA\u0026k=AlmBSKXu4371lUDiQnxC3YtnFAXkvCTgYD2MYjlLOmdr\u0026s=mhRDMPeAqygMRCaEg73DIhW-APH-M2ChQR3igw41LwQfkfL2EaFSOny9ivXypjn4e9cykQxBqyoGAps-GyGqWwA\u0026t=Fz54YjqDhIg\u0026a=my_test_group\u0026y=test_app\u0026u=http%3A%2F%2F127.0.0.1%3A8000%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyI4MDE3OGE2MC0zOWZmLTQ0MzMtOWU2Yy1mMmY2YzU2ZmU0NzQiXSwiZXhwIjoxODMyNTg4NDc1LCJuYW1lIjoiYWxsb3ctODAxNzhhNjAtMzlmZi00NDMzLTllNmMtZjJmNmM1NmZlNDc0Iiwicm9sZSI6Im5vZGUifQ.B2IZL2nWFhl2rWQa5_vhxP-lpdpe0MLo4JgvxUudsyA';
+const seed = 'rum://seed?v=1&e=1&n=0&b=5qUPypCaQhydxa3e69uV4g&c=OuZVi81GlhzNR7MhBVsD1s-qTCu7k-fjlNsjtQXHgBg&g=mRKB4um1Q_aRMx7US8apIA&k=A1pHhO97OV_D42ZQWGJtIqGPh3BO7HyOzqR8JUIJEW8N&s=YKbbAmZzKU1NXq_AJPSWdVK7Wz_E-1bIjGzLNw2-Af5o6F2mnQMzgIE97vSiKRf7A911ksqgx_WKf9rlWNpnWgE&t=F0Q-RgKXntg&a=my_test_group&y=test_app&u=http%3A%2F%2F127.0.0.1%3A8000%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyI5OTEyODFlMi1lOWI1LTQzZjYtOTEzMy0xZWQ0NGJjNmE5MjAiXSwiZXhwIjoxODM0MjEzNDMyLCJuYW1lIjoiYWxsb3ctOTkxMjgxZTItZTliNS00M2Y2LTkxMzMtMWVkNDRiYzZhOTIwIiwicm9sZSI6Im5vZGUifQ.9Ir_lm4fqEjhzXCtRoAhP0t1MZuBAsFm98XeyjxbzNA';
 const group = SDK.cache.Group.add(seed);
 const ethPrivateKey = '0xcc1bc29f7ae0163840309ec84b06f669d37c42d649778cf6a7034ab245301999';
 const agePrivateKey = 'AGE-SECRET-KEY-1LGP788TRDU9YVP3G67PUF0SFW2HTAT2NP24KE37F08YP2XUACKCQ9SVUMF';

@@ -620,26 +620,18 @@ var exports$1 = /*#__PURE__*/Object.freeze({
     default: init
 });
 
-function loadFile(url) {
-    var request = require('request');
-    return new Promise((resolve, reject) => {
-        request({
-          url,
-          encoding: null
-        }, function (err, response, body) {
-            if (err) {
-                reject(err);
-    
-            } else {
-                resolve(body);
-            }
-        });
+async function loadFile(url) {
+    const axios = require('axios');
+    const res = await axios.get(url, {
+      responseType: 'arraybuffer',
+      responseEncoding: 'binary'
     });
+    return res.data;
 }
 var Cargo = async (opt = {}) => {
     let { importHook, serverPath } = opt;
 
-    let path = loadFile('https://static-assets.pek3b.qingstor.com/rum_sdk/rage.wasm');
+    let path = await loadFile('https://static-assets.pek3b.qingstor.com/rum_sdk/rage.wasm');
 
     if (serverPath != null) {
         path = serverPath + /[^\/\\]*$/.exec(path)[0];
