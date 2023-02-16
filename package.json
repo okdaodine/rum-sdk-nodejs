@@ -1,6 +1,6 @@
 {
   "name": "rum-sdk-nodejs",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "license": "MIT",
   "description": "rum sdk for nodejs",
   "author": "rum",
@@ -64,7 +64,6 @@
     "js-base64": "^3.7.2",
     "node-localstorage": "^2.2.1",
     "protobufjs": "^6.11.3",
-    "request": "^2.88.2",
     "store2": "^2.13.2",
     "uuid": "^8.3.2"
   }
