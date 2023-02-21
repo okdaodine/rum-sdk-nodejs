@@ -34,7 +34,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     GroupId: groupId,
     Data: Base64.fromUint8Array(new Uint8Array(encrypted)),
     TimeStamp: (timestamp ? timestamp : now.getTime()) * 1000000,
-    Version: version || '1.0.0',
+    Version: version || '2.0.0',
     Expired: now.setSeconds(now.getSeconds() + 30) * 1000000,
     Nonce: nonce++,
     SenderPubkey: senderPubkey,
