@@ -3,6 +3,7 @@ import { IActivity } from '../../chain/types/activity';
 export interface ISignTrxPayload {
   groupId: string;
   data: IActivity;
+  trxId?: string;
   version?: string;
   timestamp?: number
   aesKey: string;

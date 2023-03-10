@@ -18,6 +18,7 @@ export interface ITrx {
 export interface ICreateActivityPayload {
   groupId: string;
   data: IActivity;
+  trxId?: string;
   version?: string;
   timestamp?: number
   aesKey?: string;

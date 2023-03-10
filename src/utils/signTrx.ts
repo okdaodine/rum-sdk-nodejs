@@ -12,7 +12,7 @@ import { assert, error } from './assert';
 
 let nonce = 1;
 export const signTrx = async (payload: ISignTrxPayload) => {
-  const { groupId, data, version, timestamp, aesKey, agePublicKeys, privateKey } = payload;
+  const { groupId, data, trxId, version, timestamp, aesKey, agePublicKeys, privateKey } = payload;
   assert(groupId, error.required('groupId'));
   assert(data, error.required('data'));
   assert(aesKey, error.required('aesKey'));
@@ -30,7 +30,7 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   const now = new Date();
   const senderPubkey = payload.publicKey ?? await getSenderPubkey(privateKey);
   const trx = {
-    TrxId: uuidV4(),
+    TrxId: trxId || uuidV4(),
     GroupId: groupId,
     Data: Base64.fromUint8Array(new Uint8Array(encrypted)),
     TimeStamp: (timestamp ? timestamp : now.getTime()) * 1000000,
