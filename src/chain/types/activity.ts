@@ -4,9 +4,9 @@ export interface IObject {
   summary?: string
   id?: string
   name?: string
-  image?: IObject[]
+  image?: IObject | IObject[]
   inreplyto?: IObject
-  attributedTo?: IObject[]
+  attributedTo?: IObject | IObject[]
   mediaType?: string
   describes?: IObject
 }
