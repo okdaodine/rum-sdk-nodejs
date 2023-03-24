@@ -41,6 +41,10 @@ export const list = async (options: IListContentsOptions) => {
   }) as Promise<AxiosResponse<IEncryptedContent[]>>);
   
   const contents = await Promise.all(res.data.map(async (item) => {
+    if (Object.keys(item).length === 0) {
+      return null;
+    }
+
     const encryptedBuffer = Base64.toUint8Array(item.Data);
 
     if (group?.encryptionType === 'private') {
@@ -62,6 +66,6 @@ export const list = async (options: IListContentsOptions) => {
     } as IDecryptedContent;
   }));
 
-  return contents;
+  return contents.filter(content => !!content);
 }
 

@@ -10,7 +10,6 @@ import { ethers, utils as etherUtils } from 'ethers';
 import * as Base64 from 'js-base64';
 import { assert, error } from './assert';
 
-let nonce = 1;
 export const signTrx = async (payload: ISignTrxPayload) => {
   const { groupId, data, trxId, version, timestamp, aesKey, agePublicKeys, privateKey } = payload;
   assert(groupId, error.required('groupId'));
@@ -36,7 +35,6 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     TimeStamp: (timestamp ? timestamp : now.getTime()) * 1000000,
     Version: version || '2.0.0',
     Expired: now.setSeconds(now.getSeconds() + 30) * 1000000,
-    Nonce: nonce++,
     SenderPubkey: senderPubkey,
   } as any;
   const trxWithoutSignProtoBuffer = protobuf.create({
