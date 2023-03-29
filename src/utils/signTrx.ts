@@ -32,9 +32,8 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     TrxId: trxId || uuidV4(),
     GroupId: groupId,
     Data: Base64.fromUint8Array(new Uint8Array(encrypted)),
-    TimeStamp: (timestamp ? timestamp : now.getTime()) * 1000000,
+    TimeStamp: timestamp ? timestamp : now.getTime(),
     Version: version || '2.0.0',
-    Expired: now.setSeconds(now.getSeconds() + 30) * 1000000,
     SenderPubkey: senderPubkey,
   } as any;
   const trxWithoutSignProtoBuffer = protobuf.create({
@@ -45,20 +44,16 @@ export const signTrx = async (payload: ISignTrxPayload) => {
   const hash = sha256(encBase64.parse(trxWithoutSignProtoBase64)).toString();
   const signature = await sign(hash, { privateKey, sign: payload.sign });
   const signatureBuffer = typeTransform.hexToUint8Array(signature);
-  trx.SenderSign = signatureBuffer;
-  const trxProtoBuffer = protobuf.create({
-    type: 'quorum.pb.Trx',
-    payload: trx
-  });
-  const trxJsonString = JSON.stringify({
-    TrxBytes: Base64.fromUint8Array(new Uint8Array(trxProtoBuffer))
-  });
-  const plaintextEncoded = new TextEncoder().encode(trxJsonString);
-  const encryptedTrxJsonStringBuffer = await AEScrypto.encrypt(plaintextEncoded, aesKey);
-  const sendTrxJson = {
-    TrxItem: Base64.fromUint8Array(new Uint8Array(encryptedTrxJsonStringBuffer))
+  const SenderSign = Base64.fromUint8Array(new Uint8Array(signatureBuffer));
+  return {
+    trx_id: trx.TrxId,
+    group_id: trx.GroupId,
+    data: trx.Data,
+    timestamp: trx.TimeStamp,
+    version: trx.Version,
+    sender_pubkey: trx.SenderPubkey,
+    sender_sign: SenderSign,
   };
-  return sendTrxJson;
 }
 
 export const getSenderPubkey = async (privateKey?: string) => {

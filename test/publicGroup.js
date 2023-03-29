@@ -1,6 +1,7 @@
 const SDK = require('../dist');
 
-const seed = 'rum://seed?v=1&e=0&n=0&b=8ZAwwgyGTuGNJ2NaigoWzQ&c=jk0UoCB0HU_5IvF92qN1L4yKFxG6_YeGaJRmaCFHLlE&g=sJ4WkrDyQUOqV2T4SFVP6w&k=AvIH22HXYpDs6bitoirrnXfrKQA8WIVyfdPLxO9y1H2P&s=QPpJhwNAMGM8Zdeke0Q1CkeOSdNAbHmE6s5Cq-w7ASFKVZFI9uSFSCbB10EaXj_H9rt9VrnFkmTZwQ-Is-zO-gE&t=FztcWfvxD6A&a=rum-sdk-testing&y=group_timeline&u=http%3A%2F%2F103.61.39.166%3A6090%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyJiMDllMTY5Mi1iMGYyLTQxNDMtYWE1Ny02NGY4NDg1NTRmZWIiXSwiZXhwIjoxODMxNzEzMjI5LCJuYW1lIjoiYWxsb3ctYjA5ZTE2OTItYjBmMi00MTQzLWFhNTctNjRmODQ4NTU0ZmViIiwicm9sZSI6Im5vZGUifQ.cXSc0JA7H081crSntiYDWrBC_JMqHKi9iw7V1O_7ZRg';
+SDK.cache.Group.clear();
+const seed = 'rum://seed?v=1&e=0&n=0&c=g7Ek1tQUQMKAjgb7IlpgIYaULDPRxhr9oEL_ke4_rbI&g=yu6sdWLoTguax6eMb4rH-A&k=Ag0EYNtXc_9UZylO3bEsPlpCBya1ce2hQvY8pUkMbDPW&s=zhrrZGD-4DCeWXZlHwfIYIonHZbafaqNOMhnQILVmlYAsjqWjQFGX9iSEJ-79z4IndA0Jeq3m5WH6EQozXH-kQA&t=F1DAsP6k7tA&a=default&y=group_timeline&u=http%3A%2F%2F127.0.0.1%3A8000%3Fjwt%3DeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGxvd0dyb3VwcyI6WyJjYWVlYWM3NS02MmU4LTRlMGItOWFjNy1hNzhjNmY4YWM3ZjgiXSwiZXhwIjoxODM3NzM0NTI4LCJuYW1lIjoiYWxsb3ctY2FlZWFjNzUtNjJlOC00ZTBiLTlhYzctYTc4YzZmOGFjN2Y4Iiwicm9sZSI6Im5vZGUifQ.Q4bFtLavRQ3aUmSHjrechsvknGOGJUtA59LnNDwBnjY';
 const group = SDK.cache.Group.add(seed);
 const ethPrivateKey = '0xcc1bc29f7ae0163840309ec84b06f669d37c42d649778cf6a7034ab245301999';
 

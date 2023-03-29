@@ -2,17 +2,16 @@ import { IActivity } from './activity';
 
 export interface ITrx {
   TrxId: string;
-  Type: string;
   GroupId: string;
   Data: string;
-  TimeStamp: string;
+  TimeStamp: number;
   Version: string;
-  Expired: string;
-  ResendCount: string;
-  Nonce: string;
   SenderPubkey: string;
   SenderSign: string;
-  StorageType: string;
+  Expired?: number;
+  ResendCount?: string;
+  Type?: string;
+  StorageType?: string;
 }
 
 export interface ICreateActivityPayload {

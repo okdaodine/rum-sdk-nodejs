@@ -4,6 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 import * as Base64 from 'js-base64';
 import { assert, error } from '../utils/assert';
 import * as cache from '../cache';
+import qs from 'query-string';
 
 export const list = async (options: IListContentsOptions) => {
   const { groupId  } = options;
@@ -21,19 +22,9 @@ export const list = async (options: IListContentsOptions) => {
   if (options.count) {
     params.num = options.count;
   }
-  const getGroupCtnItem = {
-    Req: params,
-  }
-  const getGroupCtnItemJsonString = JSON.stringify(getGroupCtnItem);
-  const plaintextEncoded = new TextEncoder().encode(getGroupCtnItemJsonString);
-  const encrypted = await AEScrypto.encrypt(plaintextEncoded, group!.cipherKey);
-
-  const sendJson = {
-    Req: Base64.fromUint8Array(new Uint8Array(encrypted))
-  }
 
   const apiURL = new URL(group!.chainAPIs[0]);
-  const res = await (axios.post(`${apiURL.origin}/api/v1/node/groupctn/${groupId}`, sendJson, {
+  const res = await (axios.get(`${apiURL.origin}/api/v1/node/${groupId}/groupctn?${qs.stringify(params)}`, {
     headers: {
       Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
       'Accept-Content': 'gzip',

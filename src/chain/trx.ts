@@ -26,8 +26,9 @@ export const create = async (p: ICreateActivityPayload) => {
     ...p,
     data: p.data,
   });
+  console.log(payload);
   const apiURL = new URL(group!.chainAPIs[0]);
-  const res = await (axios.post(`${apiURL.origin}/api/v1/node/trx/${p.groupId}`, payload, {
+  const res = await (axios.post(`${apiURL.origin}/api/v1/node/${p.groupId}/trx`, payload, {
     headers: {
       Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
     }
@@ -35,13 +36,14 @@ export const create = async (p: ICreateActivityPayload) => {
   return res.data;
 }
 
-export const send = async (groupId: string, payload: { TrxItem: string }) => {
+export const send = async (groupId: string, payload: any) => {
+  console.log(payload);
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
   const apiURL = new URL(group!.chainAPIs[0]);
-  const res = await (axios.post(`${apiURL.origin}/api/v1/node/trx/${groupId}`, payload, {
+  const res = await (axios.post(`${apiURL.origin}/api/v1/node/${groupId}/trx`, payload, {
     headers: {
-      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`,
+      Authorization: `Bearer ${apiURL.searchParams.get('jwt') || ''}`
     }
   }) as Promise<AxiosResponse<{ trx_id: string }>>);
   return res.data;

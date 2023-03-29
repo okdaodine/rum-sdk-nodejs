@@ -6,7 +6,7 @@ export interface IEncryptedContent {
   GroupId: string
   SenderPubkey: string
   SenderSign: string
-  TimeStamp: string
+  TimeStamp: number
   TrxId: string
   Version: string
 }
@@ -17,7 +17,7 @@ export interface IDecryptedContent {
   GroupId: string
   SenderPubkey: string
   SenderSign: string
-  TimeStamp: string
+  TimeStamp: number
   TrxId: string
   Version: string
 }
