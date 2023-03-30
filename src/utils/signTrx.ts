@@ -9,6 +9,7 @@ import encBase64 from 'crypto-js/enc-base64'
 import { ethers, utils as etherUtils } from 'ethers';
 import * as Base64 from 'js-base64';
 import { assert, error } from './assert';
+import Long from 'long';
 
 export const signTrx = async (payload: ISignTrxPayload) => {
   const { groupId, data, trxId, version, timestamp, aesKey, agePublicKeys, privateKey } = payload;
@@ -32,11 +33,10 @@ export const signTrx = async (payload: ISignTrxPayload) => {
     TrxId: trxId || uuidV4(),
     GroupId: groupId,
     Data: Base64.fromUint8Array(new Uint8Array(encrypted)),
-    TimeStamp: (timestamp ? timestamp : now.getTime() * 1000000),
+    TimeStamp: Long.fromValue(`${(timestamp ? timestamp : now.getTime())}` + '000000'),
     Version: version || '2.0.0',
     SenderPubkey: senderPubkey,
   } as any;
-  console.log(`[]:`, { trx });
   const trxWithoutSignProtoBuffer = protobuf.create({
     type: 'quorum.pb.Trx',
     payload: trx

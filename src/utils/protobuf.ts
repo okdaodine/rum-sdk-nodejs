@@ -13,6 +13,7 @@ export const create = ({
     throw new Error(errMsg)
   }
   const message = object.create(payload);
+  console.log(`[protobuf create]:`, { message });
   const buffer = object.encode(message).finish();
   return new Uint8Array(buffer);
 };

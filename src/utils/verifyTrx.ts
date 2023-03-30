@@ -6,19 +6,23 @@ import encBase64 from 'crypto-js/enc-base64'
 import { ethers } from 'ethers';
 import * as Base64 from 'js-base64';
 import { ITrx } from '../chain/types';
+import Long from 'long';
 
 export const verifyTrx = (trx: ITrx) => {
-  const _trx = {
-    TrxId: trx.TrxId,
+  const pbTrx = {
     GroupId: trx.GroupId,
     Data: trx.Data,
-    TimeStamp: trx.TimeStamp,
-    Version: trx.Version,
     SenderPubkey: trx.SenderPubkey,
+    TimeStamp: Long.fromValue(trx.TimeStamp),
+    TrxId: trx.TrxId,
+    Version: trx.Version,
   } as any;
+  if (trx.Expired) {
+    pbTrx.Expired = Long.fromValue(trx.Expired);
+  }
   const trxWithoutSignProtoBuffer = protobuf.create({
     type: 'quorum.pb.Trx',
-    payload: _trx
+    payload: pbTrx
   });
   const trxWithoutSignProtoBase64 = Base64.fromUint8Array(new Uint8Array(trxWithoutSignProtoBuffer));
   const hash = sha256(encBase64.parse(trxWithoutSignProtoBase64)).toString();

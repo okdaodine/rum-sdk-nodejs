@@ -5262,7 +5262,7 @@ long@^4.0.0:
 
 long@^5.2.1:
   version "5.2.1"
-  resolved "https://registry.npmjs.org/long/-/long-5.2.1.tgz#e27595d0083d103d2fa2c20c7699f8e0c92b897f"
+  resolved "https://registry.npmmirror.com/long/-/long-5.2.1.tgz#e27595d0083d103d2fa2c20c7699f8e0c92b897f"
   integrity sha512-GKSNGeNAtw8IryjjkhZxuKB3JzlcLTwjtiQCHKvqQet81I93kXslhDQruGI/QsddO83mcDToBVy7GqGS/zYf/A==
 
 loose-envify@^1.4.0:
