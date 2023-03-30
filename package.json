@@ -62,6 +62,7 @@
     "ethereumjs-util": "7.1.0",
     "ethers": "^5.6.9",
     "js-base64": "^3.7.2",
+    "long": "^5.2.1",
     "node-localstorage": "^2.2.1",
     "protobufjs": "^6.11.3",
     "store2": "^2.13.2",
