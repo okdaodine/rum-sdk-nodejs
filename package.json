@@ -1,6 +1,6 @@
 {
   "name": "rum-sdk-nodejs",
-  "version": "1.1.20",
+  "version": "2.0.0",
   "license": "MIT",
   "description": "rum sdk for nodejs",
   "author": "rum",
@@ -62,6 +62,7 @@
     "ethereumjs-util": "7.1.0",
     "ethers": "^5.6.9",
     "js-base64": "^3.7.2",
+    "long": "^5.2.1",
     "node-localstorage": "^2.2.1",
     "protobufjs": "^6.11.3",
     "query-string": "7.1.3",

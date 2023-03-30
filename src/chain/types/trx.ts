@@ -4,11 +4,11 @@ export interface ITrx {
   TrxId: string;
   GroupId: string;
   Data: string;
-  TimeStamp: number;
+  TimeStamp: string;
   Version: string;
   SenderPubkey: string;
   SenderSign: string;
-  Expired?: number;
+  Expired?: string;
   ResendCount?: string;
   Type?: string;
   StorageType?: string;

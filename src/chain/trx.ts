@@ -3,6 +3,7 @@ import { ITrx, ICreateActivityPayload } from './types';
 import { assert, error } from '../utils/assert';
 import * as cache from '../cache';
 import { signTrx } from '../utils';
+import { ISignedTrx } from '../utils/types';
 
 export const get = async (groupId: string, trxId: string) => {
   assert(groupId, error.required('groupId'));
@@ -26,7 +27,6 @@ export const create = async (p: ICreateActivityPayload) => {
     ...p,
     data: p.data,
   });
-  console.log(payload);
   const apiURL = new URL(group!.chainAPIs[0]);
   const res = await (axios.post(`${apiURL.origin}/api/v1/node/${p.groupId}/trx`, payload, {
     headers: {
@@ -36,8 +36,7 @@ export const create = async (p: ICreateActivityPayload) => {
   return res.data;
 }
 
-export const send = async (groupId: string, payload: any) => {
-  console.log(payload);
+export const send = async (groupId: string, payload: ISignedTrx) => {
   const group = cache.Group.get(groupId);
   assert(group, error.notFound('group'));
   const apiURL = new URL(group!.chainAPIs[0]);
