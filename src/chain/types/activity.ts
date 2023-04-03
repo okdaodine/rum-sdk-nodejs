@@ -9,6 +9,16 @@ export interface IObject {
   attributedTo?: IObject | IObject[]
   mediaType?: string
   describes?: IObject
+  published?: string
+  startTime?: string
+  endTime?: string
+  updated?: string
+  tag?: IObject
+  to?: IObject
+  bto?: IObject
+  cc?: IObject
+  bcc?: IObject
+  duration?: string
 }
 
 export interface IActivity extends IObject {

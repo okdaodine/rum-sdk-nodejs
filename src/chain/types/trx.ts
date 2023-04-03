@@ -19,7 +19,6 @@ export interface ICreateActivityPayload {
   data: IActivity;
   trxId?: string;
   version?: string;
-  timestamp?: number
   aesKey?: string;
   agePublicKeys?: string[];
   privateKey?: string;
