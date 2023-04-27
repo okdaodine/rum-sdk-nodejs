@@ -22,7 +22,6 @@ export interface IObject {
 }
 
 export interface IActivity extends IObject {
-  type: string
   actor?: IObject;
   object?: IObject | IActivity;
   target?: IObject | IActivity;
