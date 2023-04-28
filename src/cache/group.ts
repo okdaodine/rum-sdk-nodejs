@@ -2,7 +2,9 @@ import { IGroup } from './types';
 import seedUrlToGroup from '../utils/seedUrlToGroup';
 import { assert, error } from '../utils/assert';
 import nodeLocalStorage from 'node-localstorage';
-const localStorage = new nodeLocalStorage.LocalStorage("./localStorage");
+import { join } from 'path';
+const storagePath = join(__dirname, "./localStorage");
+const localStorage = new nodeLocalStorage.LocalStorage(storagePath);
 
 const store = (key: string, data?: any) => {
   if (!data) {
