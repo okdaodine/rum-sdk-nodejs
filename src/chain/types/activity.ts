@@ -19,6 +19,7 @@ export interface IObject {
   cc?: IObject
   bcc?: IObject
   duration?: string
+  object?: IObject
 }
 
 export interface IActivity extends IObject {
