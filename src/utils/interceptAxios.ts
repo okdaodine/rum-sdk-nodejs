@@ -44,14 +44,23 @@ export const interceptAxios = () => {
           const alternativeUrl = new URL(chainAPIs[curIndex]);
           const errorRequestUrl = new URL(error.config.url);
           apiLoopIndexMap[group.groupId] = curIndex;
-          return axios.request({
-            url: `${alternativeUrl.origin}${errorRequestUrl.pathname}`,
-            data: JSON.parse(error.config.data),
+          const requestOptions: any = {
+            url: `${alternativeUrl.origin}${errorRequestUrl.pathname}${errorRequestUrl.search}`,
             method: error.config.method,
             headers: {
               'Authorization': `Bearer ${alternativeUrl.searchParams.get('jwt') || ''}`
             }
+          };
+          if (error.config.data) {
+            try {
+              requestOptions.data = JSON.parse(error.config.data);
+            } catch (_) {}
+          }
+          console.log(`[rum sdk axios interception]:`, {
+            errorRequestUrl: errorRequestUrl.href,
+            alternativeRequestOptions: requestOptions
           });
+          return axios.request(requestOptions);
         } else {
           delete apiLoopIndexMap[group.groupId];
         }
