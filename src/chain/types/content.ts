@@ -27,5 +27,4 @@ export interface IListContentsOptions {
   count?: number;
   startTrx?: string
   reverse?: boolean
-  agePrivateKey?: string
 }

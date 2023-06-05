@@ -10,4 +10,3 @@ export { default as formatBase64UUID } from './formatBase64UUID';
 export { default as restoreSeedFromUrl } from './restoreSeedFromUrl';
 export { default as seedUrlToGroup } from './seedUrlToGroup';
 export { default as pubkeyToAddress } from './pubkeyToAddress';
-export { default as ageEncryption } from './ageEncryption';

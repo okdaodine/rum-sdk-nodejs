@@ -6,7 +6,6 @@ export interface ISignTrxPayload {
   trxId?: string;
   version?: string;
   aesKey: string;
-  agePublicKeys?: string[];
   privateKey?: string;
   publicKey?: string;
   sign?: (hash: string) => string | Promise<string>

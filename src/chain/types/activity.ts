@@ -7,6 +7,7 @@ export interface IObject {
   image?: IObject | IObject[]
   inreplyto?: IObject
   attributedTo?: IObject | IObject[]
+  attachment?: IObject | IObject[]
   mediaType?: string
   describes?: IObject
   published?: string
@@ -20,6 +21,9 @@ export interface IObject {
   bcc?: IObject
   duration?: string
   object?: IObject
+  width?: number
+  height?: number
+  totalItems?: number
 }
 
 export interface IActivity extends IObject {
