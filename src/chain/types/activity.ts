@@ -36,6 +36,7 @@ export interface IActivity extends IObject {
 }
 
 interface IQuote {
+  type: 'Quote'
   content: string
   book?: string
   author?: string
