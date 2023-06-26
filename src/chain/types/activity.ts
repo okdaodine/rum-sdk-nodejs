@@ -24,6 +24,7 @@ export interface IObject {
   width?: number
   height?: number
   totalItems?: number
+  quote?: IQuote
 }
 
 export interface IActivity extends IObject {
@@ -32,4 +33,12 @@ export interface IActivity extends IObject {
   target?: IObject | IActivity;
   result?: IObject;
   origin?: IObject;
+}
+
+interface IQuote {
+  content: string
+  book?: string
+  author?: string
+  name?: string
+  url?: string
 }
